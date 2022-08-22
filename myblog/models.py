@@ -5,6 +5,7 @@ class Post(models.Model):
     body = models.TextField()
     publish_date = models.DateField()
     tags = models.CharField(max_length=64)
+    url = models.CharField(max_length=32, null=False)
 
     class Meta:     
         ordering = ['publish_date']  

@@ -1,11 +1,19 @@
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render
-#from .templates import base.html
+from .models import Post
 
-#def home(request):
-#    html = '<html><body>женя совершенное создание, а я бесполезный еблан</body></html>'
-#    return HttpResponse(html)
+context = {
+    'posts' : Post.objects.order_by('publish_date'),
+}
+
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html', context=context)
+
+def post(request, post_url):
+    post_context = {
+        'posts' : Post.objects.filter(url=post_url),
+    }
+    print(post_context)
+    return render(request, 'post.html', context=post_context)

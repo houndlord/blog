@@ -1,0 +1,7 @@
+{%extends "b.html" %}
+
+{% block content %}
+{% for post in posts %}
+{{ post.body |safe}}
+{% endfor %}
+{% endblock %}
