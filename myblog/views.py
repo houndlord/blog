@@ -15,5 +15,4 @@ def post(request, post_url):
     post_context = {
         'posts' : Post.objects.filter(url=post_url),
     }
-    print(post_context)
     return render(request, 'post.html', context=post_context)
